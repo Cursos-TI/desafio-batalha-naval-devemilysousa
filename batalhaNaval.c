@@ -1,40 +1,65 @@
+// novato.c — Desafio Batalha Naval (Nível Novato)
+// Objetivo: posicionar 2 navios (1 vertical e 1 horizontal) usando vetores 2D
+//           e exibir as coordenadas com printf.
+//
+// Regras do nível:
+// - Entrada via variáveis no código (sem scanf).
+// - Usar vetores/matrizes para representar coordenadas (X, Y).
+// - Mostrar coordenadas de cada parte dos navios no console.
+//
+// Dica: altere os valores de x/y/len abaixo para testar.
+
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+int main(void) {
+    // ================================
+    // Configuração manual (edite aqui)
+    // ================================
+    // Navio Vertical: começa em (xV, yV) e ocupa lenV células para baixo (aumentando Y)
+    int xV   = 2;
+    int yV   = 1;
+    int lenV = 3;
 
-int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    // Navio Horizontal: começa em (xH, yH) e ocupa lenH células para a direita (aumentando X)
+    int xH   = 0;
+    int yH   = 4;
+    int lenH = 4;
 
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    // ==========================================
+    // Vetores bidimensionais de coordenadas (X,Y)
+    // Cada linha é uma parte do navio: [i][0] = X, [i][1] = Y
+    // ==========================================
+    int navioV[lenV][2];
+    int navioH[lenH][2];
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    // Preenche o navio vertical
+    for (int i = 0; i < lenV; i++) {
+        navioV[i][0] = xV;      // X fixo
+        navioV[i][1] = yV + i;  // Y cresce
+    }
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
+    // Preenche o navio horizontal
+    for (int i = 0; i < lenH; i++) {
+        navioH[i][0] = xH + i;  // X cresce
+        navioH[i][1] = yH;      // Y fixo
+    }
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    // ==========================
+    // Saída organizada no console
+    // ==========================
+    printf("===== Nivel Novato =====\n");
+
+    printf("Navio Vertical (inicio = (%d,%d), tamanho = %d):\n", xV, yV, lenV);
+    for (int i = 0; i < lenV; i++) {
+        printf("(%d, %d)\n", navioV[i][0], navioV[i][1]);
+    }
+    printf("\n");
+
+    printf("Navio Horizontal (inicio = (%d,%d), tamanho = %d):\n", xH, yH, lenH);
+    for (int i = 0; i < lenH; i++) {
+        printf("(%d, %d)\n", navioH[i][0], navioH[i][1]);
+    }
+    printf("\n");
 
     return 0;
 }
